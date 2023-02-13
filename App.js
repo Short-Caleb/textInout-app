@@ -18,20 +18,14 @@ const addMessage = () => {
   console.log(userData.messages)
 }
 
-const Message = ({item}) => {
+
  const renderItem = ({item}) => (
  <View>
     <Text>{item.text}</Text>
   </View>
 )
-return (
-  <FlatList
-  data={userData.messages}
-  renderItem={renderItem}
-  keyExtractor={(item, index) => index }
-  />
-)
-}
+
+  
 
 
 const storeData = async () => {
@@ -65,7 +59,11 @@ const getData = async () => {
       title='Submit'
       onPress={addMessage}
       />
-     <Message/>
+     <FlatList
+  data={userData.messages}
+  renderItem={renderItem}
+  keyExtractor={(item, index) => index }
+  />
    </SafeAreaView>
   );
 }
