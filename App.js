@@ -8,10 +8,13 @@ export default function App() {
 const [userInput, setUserInput] = useState('');
 const [userData, setUserData] = useState({});
 
-useEffect(async () => {
+useEffect(() => {
+  async function restoreData() {
   let permData;
   permData = await getData();
   setUserData(permData);
+  }
+  restoreData();
 }, [])
 
 
@@ -27,8 +30,8 @@ const addMessage = () => {
 
 
  const renderItem = ({item}) => (
- <View>
-    <Text>{item.text}</Text>
+ <View style={styles.splashes}>
+    <Text >{item.text}</Text>
   </View>
 )
 
@@ -101,5 +104,13 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 86,
     fontSize:16
+  },
+  splashes: {
+    width: '90%',
+    borderColor: 'darkblue',
+    borderRadius: 15,
+    borderWidth: 5,
+    backgroundColor: 'lightblue',
+    justifyContent: 'center'
   }
 });
